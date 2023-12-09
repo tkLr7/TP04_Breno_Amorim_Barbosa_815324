@@ -15,6 +15,7 @@ public Hash()throws Exception{
          
 public Hash(int x)throws Exception
 {
+    comp++;
     if(x < 0)
        throw new Exception("ERRO!");
     sTab = x;
@@ -30,8 +31,10 @@ private int reHash(int x)
 public boolean inserir(Player p)
 {
     boolean resp = false;
+    comp++;
     if(p != null){
        int h = p.getAltura() % sTab;
+       comp++;
         if(tabela[h] == null)
         {
             tabela[h] = p;
@@ -54,6 +57,8 @@ public boolean pesquisar(String nome)
     boolean resp = false;
     for(int i = 0; i < sTab && !resp; i++)
     {
+        comp++;
+        comp++;
         if(tabela[i] != null)
         {
             comp++;
@@ -70,13 +75,18 @@ public boolean pesquisar(String nome)
     int i = 0;
     
     for(i = 0; i < sTab && !r; i++){
+        comp++;
+        comp++;
        if(tabela[i] != null)
           r = (nome.equals(tabela[i].getNome()));
     }
+    comp++;
     if(r){
        i--;
        resp = tabela[i];
        for( ; i < sTab && r; i++){
+        comp++;
+        comp++;
           if(tabela[reHash(i)] != null && tabela[reHash(i)].getAltura() % sTab == i)
   tabela[i] = tabela[reHash(i)];
           else{
@@ -322,6 +332,6 @@ public static void main (String[] args) throws IOException, Exception
 
     String tempo = (fim - inicio)/1000 + "\t";
     String arquivar = "815324\t" + tempo + comp;
-    Arq.openWriteClose("815324_arvoreBinaria.txt", arquivar);
+    Arq.openWriteClose("815324_hashRehash.txt", arquivar);
 }
 }

@@ -54,13 +54,17 @@ public static class Hash {
             comp++;
         
             // Add a null check before invoking the equals method
+            comp++;
             if (tabela[find] != null && tabela[find].equals(nome)) {
                 resp = true;
             } else if (tabela[find] == null) {
                 comp++;
                 resp = false;
             } else if (resp) {
+                comp++;
                 for (int i = 0; i < reserva; i++) {
+                    comp++;
+                    comp++;
                     if (tabela[m1 + i] != null && tabela[m1 + i].equals(nome)) {
                         resp = true;
                         i = reserva;
